@@ -1,5 +1,3 @@
-import os
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from auth.config import (
@@ -14,17 +12,13 @@ SCOPES = [
     "playlist-read-private",
 ]
 
-CACHE_PATH = ".cache/spotify_token"
-
 def get_spotify_client():
-    os.makedirs(os.path.dirname(CACHE_PATH), exist_ok=True)
-
     auth_manager = SpotifyOAuth(
         client_id=SPOTIFY_CLIENT_ID,
         client_secret=SPOTIFY_CLIENT_SECRET,
         redirect_uri=SPOTIFY_REDIRECT_URI,
         scope=" ".join(SCOPES),
-        cache_path=CACHE_PATH
+        cache_path=".cache/spotify_token"
     )
 
     return spotipy.Spotify(auth_manager=auth_manager)

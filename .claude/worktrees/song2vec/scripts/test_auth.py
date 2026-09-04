@@ -2,7 +2,7 @@ from auth.spotify_client import SpotifyClient
 
 def main():
     client = SpotifyClient()
-    results = client.get_top_tracks(limit=30)
+    results = client.get_top_tracks(limit=5)
 
     for track in results["items"]:
         print(
